@@ -43,10 +43,10 @@ function start() {
             break;
     }
 
-    // SE SI SCEGLIE DIFFICOLTA 1
+
 
     const total = columns * columns;
-    const array1 = [];
+    const array = [];
 
     let sum = 0;
     for (let i = 0; i < total; i++) {
@@ -54,7 +54,7 @@ function start() {
         const cell = createCell(number, columns);
         cell.id = i + 1;
 
-        array1.push(cell);
+        array.push(cell);
 
         cell.addEventListener("click", () => {
             cell.classList.toggle("clicked");

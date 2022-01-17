@@ -11,7 +11,6 @@ Quando l'utente clicca su ogni cella, la cella cliccata si colora di azzurro.
 function getUniqueRndNumber(min, max, list) {
     let rndNumber;
     do {
-        console.log(rndNumber);
         rndNumber = Math.floor(Math.random() * (max - min + 1)) + min;
     } while (list.includes(rndNumber));
     return rndNumber;
@@ -25,7 +24,9 @@ function createCell(cellNumber) {
     return cell;
 }
 
+// RECUPERO LA GRIGLIA
 
+const grid = document.getElementById('grid');
 
 
 // SE SI SCEGLIE DIFFICOLTA 1
@@ -35,3 +36,19 @@ const column = 10;
 
 const total = cell * column;
 console.log(total);
+
+const array1 = [];
+
+for (let i = 0; i < total; i++) {
+    const cellNumber = getUniqueRndNumber(1, 100, array1);
+
+    array1.push(cellNumber);
+
+    const cell = createCell(cellNumber);
+
+    cell.addEventListener('click'), () => {
+        cell.classList.toggle('clicked');
+    }
+
+    grid.appendChild(cell);
+}

@@ -21,7 +21,7 @@ body {
     width: 800px;
     border: 1px solid black;
     margin: 100px auto;
-    display: flex;
+    display: none;
     flex-wrap: wrap;
 }
 

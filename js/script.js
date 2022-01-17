@@ -8,10 +8,9 @@ Quando l'utente clicca su ogni cella, la cella cliccata si colora di azzurro.
 
 //* FUNZIONI DA UTILIZZARE
 
-
 function createCell(cellNumber, cellsPerRow) {
-    const cell = document.createElement('div');
-    cell.className = 'cell';
+    const cell = document.createElement("div");
+    cell.className = "cell";
     cell.id = cellNumber;
     cell.innerText = cellNumber;
     const wh = `calc(100% / ${cellsPerRow})`;
@@ -21,29 +20,47 @@ function createCell(cellNumber, cellsPerRow) {
 }
 
 // RECUPERO LA GRIGLIA
-const grid = document.getElementById('grid');
+const select = document.getElementById("choices");
+const grid = document.getElementById("grid");
+const button = document.getElementById("start");
 
+function start() {
+    grid.innerHTML = '';
+    grid.style.display = 'flex';
 
-// SE SI SCEGLIE DIFFICOLTA 1
+    let columns;
 
-const columns = 7;
+    switch (select.value) {
+        case "2":
+            columns = 9;
+            break;
+        case "3":
+            columns = 7;
+            break;
+        case "1":
+        default:
+            columns = 10;
+            break;
+    }
 
-const total = columns * columns;
-console.log(total);
+    // SE SI SCEGLIE DIFFICOLTA 1
 
-const array1 = [];
-let sum = 0;
-for (let i = 0; i < total; i++) {
-    const number = sum + (i + 1);
-    const cell = createCell(number, columns);
-    cell.id = i + 1;
+    const total = columns * columns;
+    const array1 = [];
 
+    let sum = 0;
+    for (let i = 0; i < total; i++) {
+        const number = sum + (i + 1);
+        const cell = createCell(number, columns);
+        cell.id = i + 1;
 
-    array1.push(cell);
+        array1.push(cell);
 
-
-    cell.addEventListener('click', () => {
-        cell.classList.toggle('clicked');
-    });
-    grid.appendChild(cell);
+        cell.addEventListener("click", () => {
+            cell.classList.toggle("clicked");
+        });
+        grid.appendChild(cell);
+    }
 }
+
+button.addEventListener("click", () => start());

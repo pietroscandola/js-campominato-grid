@@ -16,25 +16,26 @@ function getUniqueRndNumber(min, max, list) {
     return rndNumber;
 }
 
-function createCell(cellNumber) {
+function createCell(cellNumber, cellsPerRow) {
     const cell = document.createElement('div');
     cell.className = 'cell';
     cell.id = cellNumber;
     cell.innerText = cellNumber;
+    const wh = `calc(100% / ${cellsPerRow})`;
+    cell.style.height = wh;
+    cell.style.width = wh;
     return cell;
 }
 
 // RECUPERO LA GRIGLIA
-
 const grid = document.getElementById('grid');
 
 
 // SE SI SCEGLIE DIFFICOLTA 1
 
-const cell = 10;
-const column = 10;
+const columns = 10;
 
-const total = cell * column;
+const total = columns * columns;
 console.log(total);
 
 const array1 = [];
@@ -44,11 +45,10 @@ for (let i = 0; i < total; i++) {
 
     array1.push(cellNumber);
 
-    const cell = createCell(cellNumber);
+    const cell = createCell(cellNumber, columns);
 
-    cell.addEventListener('click'), () => {
+    cell.addEventListener('click', () => {
         cell.classList.toggle('clicked');
-    }
-
+    });
     grid.appendChild(cell);
 }

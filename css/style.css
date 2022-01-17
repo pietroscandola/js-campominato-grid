@@ -21,11 +21,15 @@ body {
     width: 800px;
     border: 1px solid black;
     margin: 100px auto;
-    background-color: dodgerblue;
     display: flex;
     flex-wrap: wrap;
 }
 
 #grid .cell {
     border: 1px solid black;
+    cursor: pointer;
+}
+
+.clicked {
+    background-color: dodgerblue;
 }

@@ -43,14 +43,13 @@ function start() {
             break;
     }
 
-
-
     const total = columns * columns;
     const array = [];
 
-    let sum = 0;
+
     for (let i = 0; i < total; i++) {
-        const number = sum + (i + 1);
+        let number = 0;
+        number += (i + 1);
         const cell = createCell(number, columns);
         cell.id = i + 1;
 
